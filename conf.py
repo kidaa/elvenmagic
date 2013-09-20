@@ -11,13 +11,10 @@ import tinkerer.paths
 project = 'Elven  Magic'
 
 # Change this to the tagline of your blog
-tagline = u'Plone is like Mithril or Uru -metal ' \
-          u'– you can create mythic items from it, ' \
-          u'but will need Elven magic and the skills ' \
-          u'of a dwarven artisan. -Rikupekka Oksanen'
+tagline = u'When Plone feels like Mithril or Uru -metal.'
 
 # Change this to the description of your blog
-description = 'This is an awesome blog'
+description = ''
 
 # Change this to your name
 author = 'Asko Soukka'
@@ -42,7 +39,7 @@ html_favicon = 'tinkerer.ico'
 html_theme = "flat"
 
 # Theme-specific options, see docs
-html_theme_options = { }
+html_theme_options = {}
 
 # Link to RSS service like FeedBurner if any, otherwise feed is
 # linked directly
@@ -52,7 +49,7 @@ rss_service = None
 rss_generate_full_posts = False
 
 # Number of blog posts per page
-posts_per_page = 10
+posts_per_page = 5
 
 # **************************************************************
 # Edit lines below to further customize Sphinx build
@@ -77,7 +74,7 @@ exclude_patterns = ["drafts/*", "_templates/*"]
 
 # Add templates to be rendered in sidebar here
 html_sidebars = {
-    "**": ["recent.html", "searchbox.html"]
+#   "**": ["recent.html", "searchbox.html"]
 }
 
 # **************************************************************
