@@ -8,10 +8,10 @@ import tinkerer.paths
 # **************************************************************
 
 # Change this to the name of your blog
-project = 'Elven  Magic'
+project = 'Elven Magic'
 
 # Change this to the tagline of your blog
-tagline = u'When Plone feels like Mithril or Uru -metal.'
+tagline = u'When Plone feels like Mithril or Uru -metal'
 
 # Change this to the description of your blog
 description = ''
@@ -23,7 +23,7 @@ author = 'Asko Soukka'
 copyright = '2013, ' + author
 
 # Change this to your blog root URL (required for RSS feed)
-website = 'http://blogs.pandala.org/elvenmagic/blog/html'
+website = 'http://elvenmagic.pandala.org/blog/html'
 
 # **************************************************************
 # More tweaks you can do
