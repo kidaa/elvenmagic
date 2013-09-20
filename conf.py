@@ -26,7 +26,7 @@ author = 'Asko Soukka'
 copyright = '2013, ' + author
 
 # Change this to your blog root URL (required for RSS feed)
-website = 'http://datakurre.github.io/elvenmagic/'
+website = 'http://blogs.pandala.org/elvenmagic/blog/html'
 
 # **************************************************************
 # More tweaks you can do
