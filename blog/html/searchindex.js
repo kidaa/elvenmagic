@@ -1,1 +1,1 @@
-Search.setIndex({objects:{},terms:{sitemap:0},objtypes:{},titles:["Sitemap"],objnames:{},filenames:["master"]})
+Search.setIndex({envversion:42,terms:{real:2,onli:2,elven:0,magic:0,read:0,about:0,how:2,know:2,you:2,gem:2},objtypes:{},objnames:{},filenames:["README","master","2013/09/21/creating_custom_views_with_collective_listingviews"],titles:["&lt;no title&gt;","Sitemap","Creating custom views with collective.listingviews"],objects:{},titleterms:{listingview:2,creat:2,titl:0,custom:2,collect:2,sitemap:1,view:2}})

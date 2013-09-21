@@ -1,6 +1,10 @@
 syntax: glob
-bin
-parts
-develop-eggs
+.idea
 .installed.cfg
+.DS_Store
+bin
+develop-eggs
+parts
+*.egg-info
+*.pyc
 
