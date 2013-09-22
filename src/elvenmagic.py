@@ -1,4 +1,6 @@
 # -*- coding: utf-8 -*-
+import sys
+
 from App.Common import aq_base
 
 from zope.component.hooks import (
@@ -14,8 +16,8 @@ from zope.configuration import xmlconfig
 from plone.app.robotframework.remote import RemoteLibrary
 from plone.app.testing import (
     PLONE_FIXTURE,
-    ploneSite
-)
+    ploneSite,
+    PloneSandboxLayer)
 from plone.app.testing.layers import FunctionalTesting
 from Products.MailHost.interfaces import IMailHost
 
@@ -54,45 +56,45 @@ class MockMailHostLayer(Layer):
 MOCK_MAILHOST_FIXTURE = MockMailHostLayer()
 
 
-class Zope2ServerConfiguration(object):
-    """Additional configuration keywords for Zope2-instances started using
-    plone.app.robotframework.Zope2Server-library
+class ElvenMagicLayer(PloneSandboxLayer):
 
-    **Warning** This works only when being called within the same process
-    with Zope2Server-library based Zope2-server.
-    """
-
-    def configure_package(self, name,
-                          meta=False, configure=True, overrides=False,
-                          install=False):
-        """Configure named package into the last known configurationContext
-        """
-        import sys
-        __import__(name)
-        package = sys.modules[name]
-
+    def setUpZope(self, app, configurationContext):
         from robot.libraries.BuiltIn import BuiltIn
-        server = BuiltIn().get_library_instance(
-            "plone.app.robotframework.Zope2Server")
-        configurationContext = server.zope_layer["configurationContext"]
 
-        if meta:
+        for name in BuiltIn().get_variable_value('${META_PACKAGES}', []):
+            if not name in sys.modules:
+                __import__(name)
+            package = sys.modules[name]
             xmlconfig.file('meta.zcml', package,
                            context=configurationContext)
 
-        if configure:
+        for name in BuiltIn().get_variable_value('${CONFIGURE_PACKAGES}', []):
+            if not name in sys.modules:
+                __import__(name)
+            package = sys.modules[name]
             xmlconfig.file('configure.zcml', package,
                            context=configurationContext)
 
-        if overrides:
+        for name in BuiltIn().get_variable_value('${OVERRIDE_PACKAGES}', []):
+            if not name in sys.modules:
+                __import__(name)
+            package = sys.modules[name]
             xmlconfig.includeOverrides(
-                configurationContext,
-                'overrides.zcml',
-                package=package)
+                configurationContext, 'overrides.zcml', package=package)
 
-        if install:
-            import Zope2.App.startup
-            z2.installProduct(Zope2.App.startup.app(), package)
+        for name in BuiltIn().get_variable_value('${INSTALL_PACKAGES}', []):
+            if not name in sys.modules:
+                __import__(name)
+            package = sys.modules[name]
+            z2.installProduct(app, package)
+
+    def setUpPloneSite(self, portal):
+        from robot.libraries.BuiltIn import BuiltIn
+
+        for name in BuiltIn().get_variable_value('${APPLY_PROFILES}', []):
+            self.applyProfile(portal, name)
+
+ELVENMAGIC_FIXTURE = ElvenMagicLayer()
 
 
 class CustomRemoteKeywords(RemoteLibrary):
@@ -105,7 +107,6 @@ class CustomRemoteKeywords(RemoteLibrary):
         """
         return self.MailHost.messages[-1] if self.MailHost.messages else u""
 
-
 ELVENMAGIC_REMOTE_LIBRARY_FIXTURE = RemoteLibraryLayer(
     bases=(PLONE_FIXTURE,),
     libraries=(AutoLogin, CustomRemoteKeywords),
@@ -115,6 +116,7 @@ ELVENMAGIC_REMOTE_LIBRARY_FIXTURE = RemoteLibraryLayer(
 ELVENMAGIC_ROBOT_TESTING = FunctionalTesting(
     bases=(MOCK_MAILHOST_FIXTURE,
            ELVENMAGIC_REMOTE_LIBRARY_FIXTURE,
+           ELVENMAGIC_FIXTURE,
            z2.ZSERVER_FIXTURE),
-    name="AutoLogin:Robot"
+    name="ElvenMagic:Robot"
 )

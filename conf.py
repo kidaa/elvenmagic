@@ -11,7 +11,7 @@ import tinkerer.paths
 project = 'Elven Magic'
 
 # Change this to the tagline of your blog
-tagline = u'When Plone feels like Mithril or Uru -metal'
+tagline = u'Forging mythic items from Plone together'
 
 # Change this to the description of your blog
 description = ''
