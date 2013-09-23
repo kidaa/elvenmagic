@@ -12,6 +12,8 @@ from plone.app.robotframework import (
     RemoteLibraryLayer
 )
 
+from plone import api
+from plone.uuid.interfaces import IUUID
 from zope.configuration import xmlconfig
 from plone.app.robotframework.remote import RemoteLibrary
 from plone.app.testing import (
@@ -39,8 +41,11 @@ class MockMailHostLayer(Layer):
         # zope.testing-set environment variable is in place.
         from Products.CMFPlone.tests.utils import MockMailHost
         with ploneSite() as portal:
+            portal.email_from_address = 'noreply@example.com'
+            portal.email_from_name = 'Plone Site'
             portal._original_MailHost = portal.MailHost
             portal.MailHost = mailhost = MockMailHost('MailHost')
+            portal.MailHost.smtp_host = 'localhost'
             sm = getSiteManager(context=portal)
             sm.unregisterUtility(provided=IMailHost)
             sm.registerUtility(mailhost, provided=IMailHost)
@@ -102,6 +107,45 @@ class CustomRemoteKeywords(RemoteLibrary):
     environment with all the related Plone-magic in place
 
     """
+
+    def create_content(self, *args, **kwargs):
+        """Create content and return its UID
+        """
+        # XXX: It seems that **kwargs does not yet work with Robot Framework
+        # remote library interface and that's why we need to unpack the
+        # keyword arguments from positional args list.
+        for arg in args:
+            name, value = arg.split('=', 1)
+            kwargs[name] = value
+        assert 'id' in kwargs, u"Keyword arguments must include 'id'."
+        assert 'type' in kwargs, u"Keyword arguments must include 'type'."
+        if 'container' in kwargs:
+            kwargs['container'] = api.content.get(UID=kwargs['container'])
+        else:
+            kwargs['container'] = api.portal.get()
+
+        # Pre-fill Image-types with random content
+        if kwargs.get('type') == 'Image' and not 'image' in kwargs:
+            import random
+            import StringIO
+            from PIL import (
+                Image,
+                ImageDraw
+            )
+            img = Image.new('RGB', (random.randint(320, 640),
+                                    random.randint(320, 640)))
+            draw = ImageDraw.Draw(img)
+            draw.rectangle(((0, 0), img.size), fill=(random.randint(0, 255),
+                                                     random.randint(0, 255),
+                                                     random.randint(0, 255)))
+            del draw
+
+            kwargs['image'] = StringIO.StringIO()
+            img.save(kwargs['image'], 'PNG')
+            kwargs['image'].seek(0)
+
+        return IUUID(api.content.create(**kwargs))
+
     def get_the_last_sent_email(self):
         """Return the last sent email from MockMailHost sent messages storage
         """
@@ -120,3 +164,4 @@ ELVENMAGIC_ROBOT_TESTING = FunctionalTesting(
            z2.ZSERVER_FIXTURE),
     name="ElvenMagic:Robot"
 )
+

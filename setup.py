@@ -22,6 +22,7 @@ setup(
     zip_safe=False,
     install_requires=[
         'setuptools',
+        'plone.api',
         'plone.app.robotframework',
         'sphinxcontrib-robotframework[docs]',
 
