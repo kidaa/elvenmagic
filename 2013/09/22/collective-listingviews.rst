@@ -69,7 +69,10 @@ Creating custom views with collective.listingviews
 
 `collective.listingviews`_ is a real gem, if you only know how to use it.
 Next I'll demonstrate it by creating a simple image listing view with image
-previews and dimensions.
+previews and dimensions:
+
+.. figure:: collective-listingviews-image-listing.png
+   :align: center
 
 .. _collective.listingviews: http://pypi.python.org/pypi/collective.listingviews
 
@@ -107,7 +110,7 @@ __ https://plone.org/documentation/kb/add-ons/installing
        ...  collective-listingviews-activated.png
        ...  addons-enabled
 
-Activating *collective.listingviews* adds a two new configlets into *Site
+Activating *collective.listingviews* adds two new configlets into *Site
 Setup*:
 
 .. figure:: collective-listingviews-configlets-01.png
