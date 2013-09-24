@@ -28,5 +28,6 @@ setup(
 
         # Reviewed products:
         'collective.listingviews',
+        'plone.app.workflowmanager',
     ]
 )
