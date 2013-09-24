@@ -13,20 +13,22 @@
             <title><![CDATA[Creating custom views with collective.listingviews]]></title>
             <description><![CDATA[<div class="section" id="creating-custom-views-with-collective-listingviews">
 <h1>Creating custom views with collective.listingviews</h1>
-<p><a class="reference external" href="http://pypi.python.org/pypi/collective.listingviews">collective.listingviews</a> is a real gem, if you only know how to use it.
-Next I’ll demonstrate it by creating a simple image listing view with image
-previews and dimensions:</p>
+<p><a class="reference external" href="http://pypi.python.org/pypi/collective.listingviews">collective.listingviews</a> is a real gem, if you only know how to use it.</p>
+<p>Next I’ll demonstrate it by creating a simple image listing view with image
+previews and their dimensions. The resulting listing view is simple, but
+can be enhanced with CSS later:</p>
 <div class="figure align-center">
 <img alt="../../../_images/collective-listingviews-image-listing.png" src="http://elvenmagic.pandala.org/blog/html/_images/collective-listingviews-image-listing.png"/>
 </div>
-<p>Once you’ve managed to <a class="reference external" href="https://plone.org/documentation/kb/add-ons/installing">install the add-on with buildout</a> and restart your
-site, you should be able to activate the add-on through Add-ons*-panel in <em>Site
-Setup</em>:</p>
+<p>So, let’s begin.</p>
+<p>Once we have managed to <a class="reference external" href="https://plone.org/documentation/kb/add-ons/installing">install the add-on with buildout</a> and restart our
+site, we should be able to activate the add-on through <em>Add-ons</em>-panel in
+<em>Site Setup</em>:</p>
 <div class="figure align-center">
 <img alt="../../../_images/collective-listingviews-activated.png" src="http://elvenmagic.pandala.org/blog/html/_images/collective-listingviews-activated.png"/>
 </div>
-<p>Activating <em>collective.listingviews</em> adds two new configlets into <em>Site
-Setup</em>:</p>
+<p>Activating <em>collective.listingviews</em> adds two new configuration panels into
+<em>Site Setup</em>:</p>
 <div class="figure align-center">
 <img alt="../../../_images/collective-listingviews-configlets-01.png" src="http://elvenmagic.pandala.org/blog/html/_images/collective-listingviews-configlets-01.png"/>
 </div>
@@ -41,14 +43,14 @@ properties from the default content types.</p>
 <img alt="../../../_images/collective-listingviews-custom-field-01.png" src="http://elvenmagic.pandala.org/blog/html/_images/collective-listingviews-custom-field-01.png"/>
 </div>
 <p>Then let’s fill the fields properly for displaying dimensions from an
-image and finish by clicking <em>Save</em>.</p>
+image and finish the definition by clicking <em>Save</em>.</p>
 <div class="figure align-center">
 <img alt="../../../_images/collective-listingviews-custom-field-02.png" src="http://elvenmagic.pandala.org/blog/html/_images/collective-listingviews-custom-field-02.png"/>
 </div>
-<p>Read more about TAL-statements / TAL-expressions from <a class="reference external" href="http://developer.plone.org/functionality/expressions.html">Plone Developer
+<p>Read more about using TAL-statements (TAL-expressions) from <a class="reference external" href="http://developer.plone.org/functionality/expressions.html">Plone Developer
 Manual</a>.</p>
-<p>And finally, let’s repeat this by adding a one more field for displaying
-a thumbnail preview of the image:</p>
+<p>Then let’s repeat this by adding a one more field for displaying a thumbnail
+preview of the image:</p>
 <div class="figure align-center">
 <img alt="../../../_images/collective-listingviews-custom-field-03.png" src="http://elvenmagic.pandala.org/blog/html/_images/collective-listingviews-custom-field-03.png"/>
 </div>
@@ -70,12 +72,13 @@ select our brand new view to show the folder contents:</p>
 <div class="figure align-center">
 <img alt="../../../_images/collective-listingviews-image-listing.png" src="http://elvenmagic.pandala.org/blog/html/_images/collective-listingviews-image-listing.png"/>
 </div>
+<p>Jus great, isn’t it!</p>
 <div class="section" id="disclaimer">
 <h2>Disclaimer</h2>
 <p>With great power comes great responsibility. It’s extremely easy to create
-views that break when facing unexpected content types. If you want to play
-it safe, use custom listing views only with collections, which allow you to
-limit the view to be used only with supported content types.</p>
+views that break when they are trying to render unexpected content types. If
+you want to play it safe, use custom listing views only with collections, which
+allow you to limit the view see only selected content types.</p>
 </div>
 </div>]]></description>
             <category><![CDATA[ Plone ]]></category>
