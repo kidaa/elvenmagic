@@ -67,7 +67,7 @@ Creating custom views with collective.listingviews
        Import library  Dialogs
        Pause execution
 
-`collective.listingviews`_ is a real gem, if you only knew how to use it.
+`collective.listingviews`_ is a real gem, if only you knew how to use it.
 
 .. _collective.listingviews: http://pypi.python.org/pypi/collective.listingviews
 
