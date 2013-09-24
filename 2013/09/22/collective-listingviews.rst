@@ -68,17 +68,21 @@ Creating custom views with collective.listingviews
        Pause execution
 
 `collective.listingviews`_ is a real gem, if you only know how to use it.
+
+.. _collective.listingviews: http://pypi.python.org/pypi/collective.listingviews
+
 Next I'll demonstrate it by creating a simple image listing view with image
-previews and dimensions:
+previews and their dimensions. The resulting listing view is simple, but
+can be enhanced with CSS later:
 
 .. figure:: collective-listingviews-image-listing.png
    :align: center
 
-.. _collective.listingviews: http://pypi.python.org/pypi/collective.listingviews
+So, let's begin.
 
-Once you've managed to `install the add-on with buildout`__ and restart your
-site, you should be able to activate the add-on through Add-ons*-panel in *Site
-Setup*:
+Once we have managed to `install the add-on with buildout`__ and restart our
+site, we should be able to activate the add-on through *Add-ons*-panel in
+*Site Setup*:
 
 __ https://plone.org/documentation/kb/add-ons/installing
 
@@ -110,8 +114,8 @@ __ https://plone.org/documentation/kb/add-ons/installing
        ...  collective-listingviews-activated.png
        ...  addons-enabled
 
-Activating *collective.listingviews* adds two new configlets into *Site
-Setup*:
+Activating *collective.listingviews* adds two new configuration panels into
+*Site Setup*:
 
 .. figure:: collective-listingviews-configlets-01.png
    :align: center
@@ -196,7 +200,7 @@ Let's start by clicking *Add* to add a new custom field display definition:
        Click button  form-widgets-fields-buttons-add
 
 Then let's fill the fields properly for displaying dimensions from an
-image and finish by clicking *Save*.
+image and finish the definition by clicking *Save*.
 
 .. figure:: collective-listingviews-custom-field-02.png
    :align: center
@@ -222,13 +226,13 @@ image and finish by clicking *Save*.
 
        Click button  form-buttons-save
 
-Read more about TAL-statements / TAL-expressions from `Plone Developer
+Read more about using TAL-statements (TAL-expressions) from `Plone Developer
 Manual`__.
 
 __ http://developer.plone.org/functionality/expressions.html
 
-And finally, let's repeat this by adding a one more field for displaying
-a thumbnail preview of the image:
+Then let's repeat this by adding a one more field for displaying a thumbnail
+preview of the image:
 
 .. figure:: collective-listingviews-custom-field-03.png
    :align: center
@@ -365,10 +369,28 @@ And enjoy our brand new view:
 .. figure:: collective-listingviews-image-listing.png
    :align: center
 
+Jus great, isn't it!
+
 Disclaimer
 ----------
 
 With great power comes great responsibility. It's extremely easy to create
-views that break when facing unexpected content types. If you want to play
-it safe, use custom listing views only with collections, which allow you to
-limit the view to be used only with supported content types.
+views that break when they are trying to render unexpected content types. If
+you want to play it safe, use custom listing views only with collections, which
+allow you to limit the view see only selected content types.
+
+.. This robotframework-directive will prevent images to be re-generated, but it
+   won't know if the tests generating the images have changed...
+
+.. robotframework::
+   :creates: collective-listingviews-activated.png
+             collective-listingviews-add-view.png
+             collective-listingviews-configlets-01.png
+             collective-listingviews-configlets-02.png
+             collective-listingviews-configlets-03.png
+             collective-listingviews-custom-field-01.png
+             collective-listingviews-custom-field-02.png
+             collective-listingviews-custom-field-03.png
+             collective-listingviews-image-listing.png
+             collective-listingviews-select-view.png
+
