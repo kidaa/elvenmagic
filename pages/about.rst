@@ -16,7 +16,7 @@ Technologies
 ------------
 
 * `sphinxcontrib-robotframework`_ is a `Robot Framework`_ integration for
-Sphinx.
+  Sphinx.
 
 * `robotframework-selenium2screenshots`_ is a PIL_ and jQuery-based screenshot
   annotation and cropping library for Robot Framework.  It requires also
