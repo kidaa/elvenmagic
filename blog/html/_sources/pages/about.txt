@@ -6,6 +6,10 @@ built, including annotated screenshots generated from embedded Robot Framework
 acceptance tests describing a Plone add-on. (Technically, each blog post could
 present different add-ons.)
 
+.. raw:: html
+
+       <p style="text-align: center;"><iframe width="420" height="315" src="http://www.youtube.com/embed/cYN5tQJ3xtc" frameborder="0" allowfullscreen></iframe></p>
+
 Fork this blog at: http://github.com/datakurre/elvenmagic/
 
 Technologies
