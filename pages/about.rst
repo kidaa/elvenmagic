@@ -1,6 +1,10 @@
 About
 =====
 
+This could be a blog for presenting the greatest Plone add-ons with a
+step-by-step screenshots for how to use them in your Plone projects (usually,
+with only a few mouse clicks).
+
 This is an experimental a Sphinx-built blog written in ReStructuredText being
 built, including annotated screenshots generated from embedded Robot Framework
 acceptance tests describing a Plone add-on. (Technically, each blog post could
